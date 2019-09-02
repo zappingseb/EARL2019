@@ -54,19 +54,18 @@ p {
 </style>
 <h1>HTML5 Drag and Drop 1</h1>
 <main>
-<div id="value1">
-
-
-</div>
+  <div id="value1">
+    <input type="hidden" name="value2_value" value=""/>
+  </div>
   <div id="div1" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)">
     <p draggable="true" ondragstart="ziehen(event)" id="drag1"></p>
     <p draggable="true" ondragstart="ziehen(event)" id="drag2"></p>
     <p draggable="true" ondragstart="ziehen(event)" id="drag3"></p>
-  </div>
-  <div id="div2" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)">
     <p draggable="true" ondragstart="ziehen(event)" id="drag4"></p>
     <p draggable="true" ondragstart="ziehen(event)" id="drag5"></p>
     <p draggable="true" ondragstart="ziehen(event)" id="drag6"></p>
+  </div>
+  <div id="div2" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)">
   </div>
 </main>
 <script>
@@ -84,13 +83,18 @@ function ablegen(ev) {
   ev.target.appendChild(document.getElementById(data));
   if (ev.target.id == 'div2') {
       console.log(ev.dataTransfer.getData('text'))
-      var para = document.createElement("div");
-      para.setAttribute("id", ev.dataTransfer.getData('text') + "x");
-      para.setAttribute("class", "text");
+      var para = document.createElement('div');
+      para.setAttribute('id', ev.dataTransfer.getData('text') + 'x');
+      para.setAttribute('class', 'text');
       para.innerHTML += ev.dataTransfer.getData('text');
-      document.getElementById("value1").appendChild(para);
+      value_data = document.getElementsByName('value2_value')[0].value;
+      document.getElementsByName('value2_value')[0].value += ',' + ev.dataTransfer.getData('text');
+      document.getElementById('value1').appendChild(para);
   } else {
-      var elem = document.getElementById(ev.dataTransfer.getData('text') + "x");
+      var elem = document.getElementById(ev.dataTransfer.getData('text') + 'x');
+      var value_of_elem = ev.dataTransfer.getData('text');
+      document.getElementsByName('value2_value')[0].value = document.getElementsByName('value2_value')[0].value.replace(value_of_elem, '')
+      
       console.log(elem.parentNode.id)
         elem.parentNode.removeChild(elem);
   }

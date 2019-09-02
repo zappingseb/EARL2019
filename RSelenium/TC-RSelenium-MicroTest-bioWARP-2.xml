@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RSeleniumTest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./RSeleniumTest.xsd">
+  <ID>TC01 internal_app</ID>
+  <synopsis>
+    <version />
+    <author>Sebastian Wolf</author>
+    <description>Test the Field Drag and drop functionality
+    </description>
+    <change-history>
+      <change author="SW" date="2019-09-02" />
+    </change-history>
+  </synopsis>
+  <input-data>
+    <variable name="vector" value="5"></variable>
+  </input-data>
+  <tests>
+    <UITest>
+      <initialize  test-desc="go to Test App page">
+        <url>http://localhost:1212/</url>
+        <driver_location>C:/Programme_2/RSelenium/selenium-server-standalone-3.141.59.jar
+        </driver_location>
+        <ie_driver_folder>C:/Programme_2/RSelenium</ie_driver_folder>
+        <browser>chrome</browser>
+        <testspec>
+          <execution execution-type="silent" />
+          <return-value>
+            <element name="xx" tolerance="1E-7" />
+          </return-value>
+        </testspec>
+      </initialize>
+    </UITest>
+    <UITest>
+      <wait>
+        <time_in_ms>1000</time_in_ms>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </wait>
+    </UITest>
+    <UITest>
+      <click_element test-desc="Move to help">
+        <params>
+          <element type="css selector" value="#help" />
+            <iframe>0</iframe>
+            <find>1</find>
+            <move_mouse>TRUE</move_mouse>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </click_element>
+    </UITest>
+    <UITest>
+      <get_text>
+        <params>
+          <element type="class name" value="helptext"/>
+          <iframe>0</iframe>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+          <return-value diff-type="absolute" />
+          <reference>
+            <element>This is a nonsense help text.</element>
+            <element>The text exists just for testing.</element>
+          </reference>
+        </testspec>
+      </get_text>
+    </UITest>
+    <UITest>
+      <drag_drop_html5  test-desc="Move SEX to x-columns">
+        <params>
+          <id_drag>SEX</id_drag>
+          <id_target>x_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+      <drag_drop_html5 test-desc="Move COUNTRY to y_columns">
+        <params>
+          <id_drag>COUNTRY</id_drag>
+          <id_target>y_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+      </UITest>
+      <UITest>
+      <get_image test-desc="Check Plot SEX, COUNTRY">
+        <params>
+          <element type="css selector" value="#plot1" />
+        </params>
+        <testspec>
+          <execution execution-type="message" />
+          <return-value diff-type="absolute" tolerance="0.05" />
+          <reference>
+            <element>./testfiles/SEXCOUNTRY_RSeleniumTest.png</element>
+          </reference>
+        </testspec>
+      </get_image>
+    </UITest>
+      <UITest>
+      <drag_drop_html5 test-desc="Move RACE to facet_columns">
+        <params>
+          <id_drag>RACE</id_drag>
+          <id_target>facet_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+    </UITest>
+    <UITest>
+      <get_image  test-desc="Check Plot SEX, COUNTRY, RACE">
+        <params>
+          <element type="css selector" value="#plot1" />
+        </params>
+        <testspec>
+          <execution execution-type="message" />
+          <return-value diff-type="absolute" tolerance="0.05" />
+          <reference>
+            <element>./testfiles/SEXCOUNTRYRACE_RSeleniumTest.png</element>
+          </reference>
+        </testspec>
+      </get_image>
+    </UITest>
+     <UITest>
+      <drag_drop_html5 test-desc="Move SEX back">
+        <params>
+          <id_drag>SEX</id_drag>
+          <id_target>grab_from</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+    </UITest>
+    <UITest>
+      <drag_drop_html5 test-desc="Move AGE and VITAMIND to x">
+        <params>
+          <id_drag>AGE</id_drag>
+          <id_target>x_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+      <drag_drop_html5 test-desc="Move AGE and VITAMIND to x">
+        <params>
+          <id_drag>AGE</id_drag>
+          <id_target>x_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+      <drag_drop_html5 test-desc="Move AGE and VITAMIND to x">
+        <params>
+          <id_drag>VITAMIND</id_drag>
+          <id_target>x_columns</id_target>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+        </testspec>
+      </drag_drop_html5>
+    </UITest>
+    <UITest>
+      <get_image test-desc="Check Plot AGE VITAMIND, COUNTRY, RACE">
+        <params>
+          <element type="css selector" value="#plot1" />
+        </params>
+        <testspec>
+          <execution execution-type="message" />
+          <return-value diff-type="absolute" tolerance="0.05" />
+          <reference>
+            <element>./testfiles/AGEVITAMIND_RSeleniumTest.png</element>
+          </reference>
+        </testspec>
+      </get_image>
+    </UITest>
+    <UITest>
+      <get_table test-desc="Compare analysis table">
+        <params>
+          <element type="css selector" value=".grid-container-tableplot .table #table1" />
+          <iframe>0</iframe>
+        </params>
+        <testspec>
+          <execution execution-type="silent" />
+          <return-value compare-type="equal" diff-type="absolute" />
+          <reference>
+  <col-defs>
+    <coldef name="AGE" type="numeric" />
+    <coldef name="VITAMIND" type="numeric" />
+    <coldef name="COUNTRY" type="character" />
+    <coldef name="RACE" type="character" />
+  </col-defs>
+  <row name="1">
+    <cell>87</cell>
+    <cell>48.195338</cell>
+    <cell>GER</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="2">
+    <cell>58</cell>
+    <cell>23.026692</cell>
+    <cell>GER</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="3">
+    <cell>20</cell>
+    <cell>34.152459</cell>
+    <cell>CHINA</cell>
+    <cell>ASIAN</cell>
+  </row>
+  <row name="4">
+    <cell>53</cell>
+    <cell>60.623809</cell>
+    <cell>US</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="5">
+    <cell>62</cell>
+    <cell>35.553525</cell>
+    <cell>FRA</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="6">
+    <cell>33</cell>
+    <cell>16.255516</cell>
+    <cell>FRA</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="7">
+    <cell>78</cell>
+    <cell>101.581953</cell>
+    <cell>GER</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="8">
+    <cell>70</cell>
+    <cell>658.453296</cell>
+    <cell>US</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="9">
+    <cell>40</cell>
+    <cell>213.227297</cell>
+    <cell>GER</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="10">
+    <cell>73</cell>
+    <cell>245.467222</cell>
+    <cell>FRA</cell>
+    <cell>ASIAN</cell>
+  </row>
+  <row name="11">
+    <cell>26</cell>
+    <cell>483.692684</cell>
+    <cell>GER</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="12">
+    <cell>56</cell>
+    <cell>103.612968</cell>
+    <cell>FRA</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="13">
+    <cell>56</cell>
+    <cell>210.530472</cell>
+    <cell>CHINA</cell>
+    <cell>ASIAN</cell>
+  </row>
+  <row name="14">
+    <cell>53</cell>
+    <cell>438.407244</cell>
+    <cell>CHINA</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="15">
+    <cell>63</cell>
+    <cell>167.906337</cell>
+    <cell>FRA</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="16">
+    <cell>52</cell>
+    <cell>66.379798</cell>
+    <cell>GER</cell>
+    <cell>ASIAN</cell>
+  </row>
+  <row name="17">
+    <cell>54</cell>
+    <cell>53.368551</cell>
+    <cell>FRA</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="18">
+    <cell>61</cell>
+    <cell>78.426845</cell>
+    <cell>CHINA</cell>
+    <cell>ASIAN</cell>
+  </row>
+  <row name="19">
+    <cell>57</cell>
+    <cell>189.160075</cell>
+    <cell>US</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="20">
+    <cell>39</cell>
+    <cell>142.781404</cell>
+    <cell>GER</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="21">
+    <cell>47</cell>
+    <cell>157.154132</cell>
+    <cell>GER</cell>
+    <cell>AFRO AMERICAN</cell>
+  </row>
+  <row name="22">
+    <cell>39</cell>
+    <cell>224.724772</cell>
+    <cell>US</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="23">
+    <cell>63</cell>
+    <cell>314.493726</cell>
+    <cell>FRA</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="24">
+    <cell>59</cell>
+    <cell>4.492254</cell>
+    <cell>US</cell>
+    <cell>AMERICAN</cell>
+  </row>
+  <row name="25">
+    <cell>63</cell>
+    <cell>57.846298</cell>
+    <cell>US</cell>
+    <cell>ASIAN</cell>
+  </row>
+</reference>
+        </testspec>
+      </get_table>
+    </UITest>
+  </tests>
+</RSeleniumTest>

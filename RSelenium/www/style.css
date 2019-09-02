@@ -1,0 +1,154 @@
+[draggable=true] {
+  cursor: move;
+  padding: 0.5em;
+  border-radius: 0.4em;
+  -webkit-box-shadow: 1px 1px 1px 2px rgba(226,225,225,1);
+  -moz-box-shadow: 1px 1px 1px 2px rgba(226,225,225,1);
+  box-shadow: 1px 1px 1px 2px rgb(226, 225, 225);
+  border:0;
+}
+body{
+  padding: 1em;
+}
+label{
+  float:left;
+}
+.grid-grab {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'main main left mid right';
+  grid-gap: 10px;
+  margin: 2em;
+}
+.grid-container-tableplot {
+  display: grid;
+  grid-template-areas:
+    'header header header header header '
+    'left left left right right';
+  grid-gap: 1em;
+  margin: 2em;
+  border-top: 1px solid black;
+  padding-top: 1.4em;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+}
+.grab {
+  grid-area: main;
+}
+.header{
+  grid-area: header;
+  font-size: 2.5em;
+  border-bottom: 1px solid black;
+}
+.x-columns {
+  grid-area: left;
+}
+.y-columns {
+  grid-area: mid;
+}
+.facet-columns {
+  grid-area: right;
+}
+
+.grid-container-tableplot .table{
+  grid-area: right;
+  padding: 10px;
+  margin: 10px;
+}
+
+.grid-container-tableplot .plot{
+  grid-area: left;
+}
+
+div.drag {
+  float: left;
+  min-width: 10em;
+  min-height: 300px;
+  margin: 10px;
+  padding: 10px;
+  /* border: 1px solid #aaaaaa; */
+  background: white;
+  -webkit-box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+  -moz-box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+  box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+  border-radius: 0.7em;
+}
+.grab{
+  width: 90%;
+}
+p {
+  float: left;
+  margin: 1em;
+ /* border-radius: 50%; */
+  border: 2px solid #333;
+ /* width: 2em;*/
+ /* height: 2em;*/
+}
+
+#drag1 {
+  background: #dfac20;
+}
+
+#drag2 {
+  background: #3983ab;
+}
+
+#drag3 {
+  background: #c32e04;
+}
+
+#drag4 {
+  background: #5a9900;
+}
+
+#drag5 {
+  background: purple;
+}
+
+#drag6 {
+  background: white;
+}
+.text{
+    border:0;
+    width: 50px;
+    height: 50px;
+
+}
+
+/*HELP*/
+div#help {
+    position: fixed;
+    right: 2em;
+    top: 2em;
+    -webkit-box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+    -moz-box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+    box-shadow: 5px 6px 12px 0px rgba(204,204,204,1);
+    padding: 0.1em;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    font-weight: 700;
+    background-color: black;
+    color: white;
+    border-radius: 0.2em;
+}
+div#help~div.helptext{
+  display: none;
+  position: fixed;
+  right: 2em;
+  top: 4.1em;
+  padding: 1em;
+  border: 1px solid black;
+  background-color: white;
+}
+div#help:hover~div.helptext{
+  display:block;
+}
+.helptext p{
+  border: 0;
+  float: left;
+}
