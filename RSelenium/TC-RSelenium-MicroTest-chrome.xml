@@ -350,5 +350,12 @@
         </testspec>
       </get_table>
     </UITest>
+    <UITest>
+      <close>
+        
+        <testspec />
+      </close>
+      
+    </UITest>
   </tests>
 </RSeleniumTest>
