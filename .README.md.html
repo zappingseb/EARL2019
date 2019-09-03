@@ -652,13 +652,34 @@ function setDocumentScrollTop(ypos)
 </ul> 
 <h3> <a id="before-looking-into-the-code" class="anchor" href="#before-looking-into-the-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Before looking into the code</h3> 
 <p>Install all dependencies:</p> 
-<pre><code>install.packages(c(&quot;shinytest&quot;, &quot;tidyverse&quot;, &quot;shiny&quot;, &quot;XML&quot;, &quot;jsonlite&quot;, &quot;ggplot2&quot;, &quot;ggmosaic&quot;))
+<pre><code>install.packages(c(&quot;shinytest&quot;, &quot;tidyverse&quot;, &quot;shiny&quot;, &quot;XML&quot;, &quot;jsonlite&quot;, &quot;ggplot2&quot;, &quot;ggmosaic&quot;, &quot;callr&quot;))
 </code></pre> 
 <h2> <a id="shinytest" class="anchor" href="#shinytest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>shinytest</h2> 
 <h2> <a id="rselenium" class="anchor" href="#rselenium" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RSelenium</h2> 
 <h3> <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h3> 
 <p>For my setup I downloaded the <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" rel="nofollow">ChromeDriver</a> and <a href="https://github.com/mozilla/geckodriver/releases">GheckoDriver</a> for Selenium. Additionally you will need the <a href="https://bit.ly/2TlkRyu" rel="nofollow">SeleniumServer-Standalone</a>.</p> 
 <p>On my PC I stored them under: <code>C:\Programme_2\RSelenium</code>. You will see this address a lot of times in the code. If you want an easy way of working, I recommend storing your code there, too.</p> 
-<h3> <a id="the-app" class="anchor" href="#the-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The App</h3>
+<p>You will need Java &gt; v8 to run Selenium.</p> 
+<h3> <a id="the-app" class="anchor" href="#the-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The App</h3> 
+<p>The app showing Pharma data shall be used for stakeholders checking clinical studies.</p> 
+<p><a href="pptx/photos/app_pharma.png" target="_blank" rel="noopener noreferrer"><img src="pptx/photos/app_pharma.png" alt="" style="max-width:100%;" /></a></p> 
+<p>Inside the Pharma App we build a drag&amp;drop to allow users to define what they want to plot. The plot shall be tested by image comparison.</p> 
+<p>As this app is for non-statisticians, there is also a help build in which shall be tested. Even if here, the help does not contain anything.</p> 
+<p>Moreover a data-table should ensure that data is not changed form input to output.</p> 
+<p>App parts:</p> 
+<ul> 
+ <li>Drag and drop for variables</li> 
+ <li>Opens pop-up with on hover on help</li> 
+ <li>hidden input value</li> 
+ <li>Data table</li> 
+ <li>should run on multiple sites (asia Chrome / Europe Firefox)</li> 
+</ul> 
+<h3> <a id="files" class="anchor" href="#files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Files</h3> 
+<p><code>app.R</code></p> 
+<p>Contains the app Code itself. You can simply run the app and play around by opening it in RStudio. It is recommended to run the app in Chrome or Firefox.</p> 
+<p><code>test.app.R</code></p> 
+<p>Starts the app via <code>callr</code> in a second session. Starts a Selenium Standalone server, runs a clicktests in Firefox, stops the app and the Selenium Server.</p> 
+<p><code>test.app.RSeleniumTest.R</code></p> 
+<p>This script just runs on my computer. For disclosure reasons the package <code>RSeleniumTest</code> is not open-sourced, yet. But RSeleniumTest uses the two XML files <code>TC-RSelenium-MicroTest-chrome.xml</code> and <code>TC-RSelenium-MicroTest-firefox.xml</code> to test the app.</p>
 </body>
 </html>

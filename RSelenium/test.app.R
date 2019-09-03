@@ -11,7 +11,12 @@ process_r <- start_app()
 Sys.sleep(2)
 
 
-start_selenium("http://localhost:1235", browserName = "firefox")
+start_selenium(
+    url = "http://localhost:1235",
+    driver_location = "C:\\Programme_2\\RSelenium\\selenium-server-standalone-3.141.59.jar",
+    java_home = "C:/Program Files/Java/jdk1.8.0_201",
+    driver_folder = "C:\\Programme_2\\RSelenium",
+    browserName = "firefox")
 
 el_1 <- remDr$findElements("id", "help")
 logs <- c(logs, "INFO: Move mouse to 'help'.")

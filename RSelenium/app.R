@@ -98,6 +98,7 @@ ui <- bootstrapPage(
 )
 
 server <- function(input, output) {
+
   columns_x <- reactive({
     unique(split_cols(input$x_columns))
   })
