@@ -1,3 +1,4 @@
+library(shinytest)
 library(testthat)
 library(XML)
 library(jsonlite)

@@ -16,7 +16,7 @@ start_selenium(
     driver_location = "C:\\Programme_2\\RSelenium\\selenium-server-standalone-3.141.59.jar",
     java_home = "C:/Program Files/Java/jdk1.8.0_201",
     driver_folder = "C:\\Programme_2\\RSelenium",
-    browserName = "firefox")
+    browserName = "chrome")
 
 el_1 <- remDr$findElements("id", "help")
 logs <- c(logs, "INFO: Move mouse to 'help'.")
