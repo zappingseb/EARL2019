@@ -1,0 +1,105 @@
+<style>
+[draggable=true] {
+  cursor: move;
+}
+
+div {
+  float: left;
+  width: 10em;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+  background: white;
+}
+
+p {
+  float: left;
+  margin: 1em;
+  border-radius: 50%;
+  border: 2px solid #333;
+  width: 2em;
+  height: 2em;
+}
+
+#drag1 {
+  background: #dfac20;
+}
+
+#drag2 {
+  background: #3983ab;
+}
+
+#drag3 {
+  background: #c32e04;
+}
+
+#drag4 {
+  background: #5a9900;
+}
+
+#drag5 {
+  background: purple;
+}
+
+#drag6 {
+  background: white;
+}
+.text{
+    border:0;
+    width: 50px;
+    height: 50px;
+
+}
+</style>
+<h1>HTML5 Drag and Drop 1</h1>
+<main>
+  <div id="value1">
+    <input type="hidden" name="value2_value" value=""/>
+  </div>
+  <div id="div1" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)">
+    <p draggable="true" ondragstart="ziehen(event)" id="drag1"></p>
+    <p draggable="true" ondragstart="ziehen(event)" id="drag2"></p>
+    <p draggable="true" ondragstart="ziehen(event)" id="drag3"></p>
+    <p draggable="true" ondragstart="ziehen(event)" id="drag4"></p>
+    <p draggable="true" ondragstart="ziehen(event)" id="drag5"></p>
+    <p draggable="true" ondragstart="ziehen(event)" id="drag6"></p>
+  </div>
+  <div id="div2" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)">
+  </div>
+</main>
+<script>
+function ziehen(ev) {
+  ev.dataTransfer.setData('text', ev.target.id);
+}
+
+function ablegenErlauben(ev) {
+  ev.preventDefault();
+}
+
+function ablegen(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData('text');
+  ev.target.appendChild(document.getElementById(data));
+  if (ev.target.id == 'div2') {
+      console.log(ev.dataTransfer.getData('text'))
+      var para = document.createElement('div');
+      para.setAttribute('id', ev.dataTransfer.getData('text') + 'x');
+      para.setAttribute('class', 'text');
+      para.innerHTML += ev.dataTransfer.getData('text');
+      value_data = document.getElementsByName('value2_value')[0].value;
+      document.getElementsByName('value2_value')[0].value += ',' + ev.dataTransfer.getData('text');
+      document.getElementById('value1').appendChild(para);
+  } else {
+      var elem = document.getElementById(ev.dataTransfer.getData('text') + 'x');
+      var value_of_elem = ev.dataTransfer.getData('text');
+      document.getElementsByName('value2_value')[0].value = document.getElementsByName('value2_value')[0].value.replace(value_of_elem, '')
+      
+      console.log(elem.parentNode.id)
+        elem.parentNode.removeChild(elem);
+  }
+
+}
+
+
+</script>

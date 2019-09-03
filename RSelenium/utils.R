@@ -15,3 +15,10 @@ boxplot_intern <- function(x, y, facet_cols, pat_data = get("pat_data", parent.f
       NULL
     }
 }
+
+split_cols <- function(x) {
+  if (!is.null(x)) {
+    columns_selected <- strsplit(x, split = ",")[[1]]
+    columns_selected[columns_selected != ""]
+  }
+}

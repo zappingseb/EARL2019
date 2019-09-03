@@ -36,11 +36,13 @@ ui <- bootstrapPage(
   tags$input(type = "hidden", value = "", name = "x_columns_value"),
   tags$input(type = "hidden", value = "", name = "y_columns_value"),
   tags$input(type = "hidden", value = "", name = "facet_columns_value"),
+  # Help Entries
   div(id = "help", "?"),
   div(class="helptext",
     tags$p("This is a nonsense help text."),
     tags$p("The text exists just for testing.")
   ),
+  # Grab from Item
   div(
     class = "grid-grab",
     div(class = "header", "Visualizing patient groups and measurements"),
@@ -80,6 +82,7 @@ ui <- bootstrapPage(
       div(id = "facet_columns", class = "drag", style = "grid-area: right", ondragover = "ablegenErlauben(event)", ondrop = "ablegen(event)")
     )
   ),
+  # Outputs
   div(style = "clear:both"),
   div(
     class = "grid-container-tableplot",
@@ -95,13 +98,6 @@ ui <- bootstrapPage(
 )
 
 server <- function(input, output) {
-  split_cols <- function(x) {
-    if (!is.null(x)) {
-      columns_selected <- strsplit(x, split = ",")[[1]]
-      columns_selected[columns_selected != ""]
-    }
-  }
-
   columns_x <- reactive({
     unique(split_cols(input$x_columns))
   })
@@ -112,29 +108,28 @@ server <- function(input, output) {
     unique(split_cols(input$facet_columns))
   })
 
+  # Show the selected columns of the patient data
   output$table1 <- renderDataTable({
     columns_to_use <- c(columns_x(), columns_y(), columns_facet())
     validate(need(length(columns_to_use) > 0, "Please select any column"))
     pat_data[columns_to_use]
   })
+  
+  # Visualize
   output$plot1 <- renderPlot({
+    # Double check the inputs
     validate(need(is.character(columns_x()) && length(columns_x()) > 0, "Please define X-variable"))
     validate(need(is.character(columns_y()) && length(columns_y()) == 1, "Please define single Y-variable"))
-    factor_y <- vapply(
-      X = columns_y(),
-      FUN = function(x) is.factor(pat_data[[x]]),
-      logical(1)
-    )
-    factor_x <- vapply(
-      X = columns_x(),
-      FUN = function(x) is.factor(pat_data[[x]]),
-      logical(1)
-    )
+    
+    factor_x <- vapply(X = columns_x(), FUN = function(x) is.factor(pat_data[[x]]), logical(1))
+    factor_y <- vapply(X = columns_y(), FUN = function(x) is.factor(pat_data[[x]]), logical(1))
+
     validate(need(
       all(factor_y),
       "Please define a character variable as Y"
     ))
 
+    # In case x and y are factors, use a mosaic plot
     if (all(factor_x) && all(factor_y)) {
       formula <- paste0("ggmosaic::product(", paste(columns_x(), collapse = ","), ")")
       
@@ -150,6 +145,7 @@ server <- function(input, output) {
         } else {
           NULL
         }
+    # In case any x is numeric, use a scatterplot
     } else {
       
       if (length(columns_x()) == 1) {
