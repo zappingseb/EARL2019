@@ -1,0 +1,91 @@
+{
+  "input": {
+    "data_columns": [
+      "TEST1",
+      "TEST2",
+      "TEST4"
+    ],
+    "data_columns-selectized": "",
+    "data_file": {
+      "name": [
+        "test123.csv"
+      ],
+      "size": [
+        1630
+      ],
+      "type": [
+        "text/csv"
+      ],
+      "datapath": [
+        "0.csv"
+      ]
+    }
+  },
+  "output": {
+    "boxplot": {
+      "src": "[image data sha1: 679b49dbf70d5cee1b4af2f815d8c60d99d3413a]",
+      "width": 411,
+      "height": 400,
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": -0.39875,
+              "right": 0.39875,
+              "bottom": 4.89608750935,
+              "top": 8.21772054165
+            },
+            "mapping": {
+              "x": null,
+              "y": "measurement",
+              "fill": "samples"
+            },
+            "range": {
+              "left": 29.1506778388828,
+              "right": 333.843206444156,
+              "bottom": 379.58894619863,
+              "top": 5.47945068493151
+            }
+          }
+        ],
+        "dims": {
+          "width": 411,
+          "height": 400
+        }
+      }
+    },
+    "finalresult": {
+      "html": "<div>\n  <p>\n    <img src=\"cross.png\" width=\"20\"/>\n    <label>TEST1 , TEST3<\/label>\n  <\/p>\n  <p>\n    <img src=\"check.png\" width=\"20\"/>\n    <label>TEST1 , TEST4<\/label>\n  <\/p>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "FTest": "X, Y =  TEST1 , TEST3 \n F =  0.290598515533439 , p value =  0.000759241674941135\nX, Y =  TEST1 , TEST4 \n F =  1.77849305956115 , p value =  0.108499811830485",
+    "FTestString": {
+      "html": "<p>X, Y =  TEST1 , TEST3 \n F-Test failed<\/p>\n<p>X, Y =  TEST1 , TEST4 \n F-Test ok<\/p>",
+      "deps": [
+
+      ]
+    },
+    "MeanTest": {
+      "html": "<p>X, Y =  TEST1 , TEST3 \n Mean Test failed<\/p>\n<p>X, Y =  TEST1 , TEST4 \n Mean Test ok<\/p>",
+      "deps": [
+
+      ]
+    },
+    "summary": "<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> samples <\/th> <th style='text-align: right;'> Mean <\/th> <th style='text-align: right;'> SD <\/th> <th style='text-align: right;'> Median <\/th> <th style='text-align: right;'> Q25 <\/th> <th style='text-align: right;'> Q75 <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> TEST1 <\/td> <td align=\"right\"> 5.49 <\/td> <td align=\"right\"> 0.29 <\/td> <td align=\"right\"> 5.53 <\/td> <td align=\"right\"> 5.19 <\/td> <td align=\"right\"> 5.71 <\/td> <\/tr>\n  <tr> <td> TEST3 <\/td> <td align=\"right\"> 7.13 <\/td> <td align=\"right\"> 0.54 <\/td> <td align=\"right\"> 7.19 <\/td> <td align=\"right\"> 6.65 <\/td> <td align=\"right\"> 7.44 <\/td> <\/tr>\n  <tr> <td> TEST4 <\/td> <td align=\"right\"> 6.52 <\/td> <td align=\"right\"> 0.22 <\/td> <td align=\"right\"> 6.53 <\/td> <td align=\"right\"> 6.36 <\/td> <td align=\"right\"> 6.68 <\/td> <\/tr>\n   <\/tbody> <\/table>"
+  },
+  "export": {
+
+  }
+}
