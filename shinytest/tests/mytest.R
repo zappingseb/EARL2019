@@ -84,11 +84,11 @@ test_that("Test App",
               c("5.49", "7.13", "6.52")
             )
             expect_equal(
-               unname(get_code_from_div_p_html(app_snap$output$finalresult$html)[[1]]),
-               "cross.png")
+              unname(get_code_from_div_p_html(app_snap$output$finalresult$html)[[1]]),
+              "cross.png")
             expect_equal(
-               unname(get_code_from_div_p_html(app_snap$output$finalresult$html)[[2]]),
-               "check.png")
+              unname(get_code_from_div_p_html(app_snap$output$finalresult$html)[[2]]),
+              "check.png")
             
             
           })
